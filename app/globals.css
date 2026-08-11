@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+:root {
+  --color-background: #0c0a08;
+  --color-surface: #161311;
+  --color-surface-elevated: #1e1a16;
+  --color-text-primary: #f5f0e8;
+  --color-text-secondary: #a39a8c;
+  --color-accent: #e8a54b;
+  --color-accent-hover: #f0b85c;
+  --color-accent-muted: rgba(232, 165, 75, 0.15);
+  --color-border: #2a2520;
+  --color-deep-green: #1a4d3e;
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-elevated: var(--color-surface-elevated);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-muted: var(--color-accent-muted);
+  --color-border: var(--color-border);
+  --color-deep-green: var(--color-deep-green);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-syne);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-accent-muted);
+  color: var(--color-text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Hero ambient atmosphere */
+.hero-atmosphere {
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(232, 165, 75, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(26, 77, 62, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(30, 26, 22, 0.9) 0%, transparent 60%),
+    linear-gradient(165deg, #0c0a08 0%, #14100c 45%, #0c0a08 100%);
+}
+
+.hero-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e8a54b' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Animations */
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes waveform {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1.05) translate(0, 0);
+  }
+  to {
+    transform: scale(1.14) translate(-1.5%, -1%);
+  }
+}
+
+@keyframes scroll-cue {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scaleY(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.ken-burns-img {
+  animation: ken-burns 28s ease-in-out infinite alternate;
+}
+
+.scroll-cue {
+  animation: scroll-cue 2s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.animate-fade-rise {
+  animation: fade-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-rise-delay-1 {
+  animation: fade-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.animate-fade-rise-delay-2 {
+  animation: fade-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+}
+
+.animate-fade-rise-delay-3 {
+  animation: fade-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+}
+
+.animate-fade-rise-delay-4 {
+  animation: fade-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
+}
+
+.wave-bar {
+  animation: waveform 1.4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.sound-bar {
+  animation: waveform 0.9s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.success-panel {
+  animation: fade-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.75rem) scale(0.985);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-rise,
+  .animate-fade-rise-delay-1,
+  .animate-fade-rise-delay-2,
+  .animate-fade-rise-delay-3,
+  .animate-fade-rise-delay-4,
+  .wave-bar,
+  .sound-bar,
+  .ken-burns-img,
+  .scroll-cue,
+  .success-panel {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .will-change-transform {
+    transform: none !important;
+  }
+}
